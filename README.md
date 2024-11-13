@@ -1,5 +1,5 @@
 # nekoRv
-Single stage RISC-V32 IM core written in VHDL.
+Single stage RISC-V 32 IM Zicsr core written in VHDL.
 
 ```
 entity nekoRv is
@@ -13,7 +13,9 @@ port(
     
     clk:                in  std_logic;
     reset:              in  std_logic;
-    
+
+    mtimeIrq:           in  std_logic;
+
     a:                  out std_logic_vector( 31 downto 0 );
     din:                in  std_logic_vector( 31 downto 0 );
     dout:               out std_logic_vector( 31 downto 0 );
@@ -38,6 +40,8 @@ end nekoRv;
 **clk** - CPU clock.
 
 **reset** - CPU reset, high level active.
+
+**mtimeIrq** - Trigger mtime irq ( used by FreeRTOS ), active high - one clock width pulse.
 
 **a** - address out ( bits a1 and a0 are not used and set to 0 ).
 
